@@ -49,3 +49,14 @@ Today marks the beginning of the backend journey. The focus was entirely on unde
 "scripts": {
   "start": "node src/server.js --config dev"
 }
+
+##setup & installation
+
+###create package.json
+```bash
+npm init -y
+###install nodemon as devDependency
+```bash
+npm install --save-dev nodemon
+###install dotenv as regular dependency
+npm install dotenv
