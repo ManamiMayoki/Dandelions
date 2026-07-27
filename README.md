@@ -44,14 +44,7 @@ Today marks the beginning of the backend journey. The focus was entirely on unde
 | **example** | `express`(runs the site),`dotenv`(hold secrets) | `nodemon`(auto-restarts my code while i type) |
 | **if it's missing?** | website crashes! Live users see a major issue | no effect on users. just only lose local helper. |
 
--**scripts** shortcuts for long, annoying terminal commands. Instead of typing a massive command like `node src/server.js --config dev` every single time i want to test my code, so create a tiny shortcut called `"start"` or `"dev"` inside my `package.json` menu:
-
-json
-{
-    "scripts": {
-        "start": "node src/server.js --config dev"
-    }
-}
+-**scripts** shortcuts for long, annoying terminal commands. Instead of typing a massive command like `node src/server.js --config dev` every single time i want to test my code, so create a tiny shortcut called `"start"` or `"dev"` inside my `package.json` menu.
 
 ## Setup & installation
 -**Create package.json** `npm init -y`
