@@ -3,6 +3,7 @@
 A professional archive dedicated to documenting daily progress in backend engineering, system architectures, and server design. This repository serves as a clear, step-by-step log of core concepts mastered through daily hands-on practice.
 
 ## Environment Setup
+
 - **System Runtime:** Node.js (v22.23.1)
 - **Development Tool:** VS Code
 - **Operating System:** Ubuntu Linux
@@ -43,20 +44,17 @@ Today marks the beginning of the backend journey. The focus was entirely on unde
 | **example** | `express`(runs the site),`dotenv`(hold secrets) | `nodemon`(auto-restarts my code while i type) |
 | **if it's missing?** | website crashes! Live users see a major issue | no effect on users. just only lose local helper. |
 
--**scripts**shortcuts for long, annoying terminal commands. Instead of typing a massive command like `node src/server.js --config dev` every single time i want to test my code, so create a tiny shortcut called `"start"` or `"dev"` inside my `package.json` menu:
+-**scripts** shortcuts for long, annoying terminal commands. Instead of typing a massive command like `node src/server.js --config dev` every single time i want to test my code, so create a tiny shortcut called `"start"` or `"dev"` inside my `package.json` menu:
 
-```json
-"scripts": {
-  "start": "node src/server.js --config dev"
+json
+{
+    "scripts": {
+        "start": "node src/server.js --config dev"
+    }
 }
 
-##setup & installation
+## Setup & installation
+-**Create package.json** `npm init -y`
+-**Install nodemon as devDependency** `npm install --save-dev nodemon`
+-**Install dotenv as regular dependency** `npm install dotenv`
 
-###create package.json
-```bash
-npm init -y
-###install nodemon as devDependency
-```bash
-npm install --save-dev nodemon
-###install dotenv as regular dependency
-npm install dotenv
