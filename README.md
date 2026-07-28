@@ -46,8 +46,41 @@ Today marks the beginning of the backend journey. The focus was entirely on unde
 
 -**scripts** shortcuts for long, annoying terminal commands. Instead of typing a massive command like `node src/server.js --config dev` every single time i want to test my code, so create a tiny shortcut called `"start"` or `"dev"` inside my `package.json` menu.
 
-## Setup & installation
+-**Setup & installation**
+
 -**Create package.json** `npm init -y`
 -**Install nodemon as devDependency** `npm install --save-dev nodemon`
 -**Install dotenv as regular dependency** `npm install dotenv`
+
+## Day 3: Express Server,Middleware & Routing
+
+Today focus native Node.js HTTP module to **Express.js**(framework). Mainly how data move through a server framework &
+build path(routes) for **REST API**
+
+---
+
+* **Express.js Server Architecture** system where requests pass through middleware, are handled by routes, and return responses to the client.
+
+* **The Middleware Pipeline:**middleware functions are like **security guards** that the request passes through *before* it hits the final destination (the controller). They can inspect, edit, or block data. Like parsing JSON text into a JavaScript object
+
+* **Routing Infrastructure:**system that matching incoming HTTP Request Methods(`GET`,`POST`) & specific URL paths(`/users`) to clear backend handler operations.
+
+* **REST API Conventions:**rules for designing APIs using clear URLs, HTTP methods, and structured responses to manage data:
+  * `GET`: fetch data from the server.
+  * `POST`: send new data to the server to create a resource.
+
+---
+
+### HTTP Methods & API Operations
+| HTTP Method | API Endpoint | System Action | Expected Response Status |
+| :--- | :--- | :--- | :--- |
+| **GET** | `/users` | Fetches a list of all current users | `200 OK` |
+| **POST** | `/users` | Submits a new user to the database | `201 Created` |
+
+---
+
+-**Setup & installation**
+
+-**Install Express** `npm install express`
+
 
