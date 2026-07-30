@@ -97,11 +97,27 @@ Series of checkpoints/gates that a request passes through before it finally hits
 
 [Incoming Request] --> [Middleware 1 (req,res,next)] --> [Middleware 2] --> [Route Controller] --> [Response Sent]
 
-* **Types of Middleware**
-| Middleware Type | Where it Works | Purpose | Example Code |
-| Application Middleware | Whole app | Runs for every request (logging) | `app.use((req, res, next) => { console.log("Request received"); next(); });` |
-| Router Middleware | Specific route | Runs only for certain routes | `app.get('/user', (req, res) => { res.send("User route"); });` |
-| Error Middleware | Handles errors | Catches and handles errors (4 params) | `app.use((err, req, res, next) => { res.status(500).send("Something went wrong"); });` |
+## Core Middleware Classifications
 
+| Middleware Type | Where it Works | Purpose | Binding Target | Function Signature | Example Code |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Application Middleware** | Whole app | Runs for every request (logging, parsing) | `app.use()` | `(req, res, next) => {}` | `app.use((req, res, next) => { console.log("Request received"); next(); });` |
+| **Router Middleware** | Specific route | Runs only for certain routes or sub-paths | `router.use()` or inline in routes like `router.get(path, middleware, handler)` | `(req, res, next) => {}` | `router.get('/user', authMiddleware, (req, res) => { res.send("User route"); });` |
+| **Error Middleware** | Handles errors | Catches and handles app errors gracefully | `app.use()` *(placed at the very bottom)* | `(err, req, res, next) => {}` | `app.use((err, req, res, next) => { res.status(500).send("Something went wrong"); });` |
+
+---
+
+## Practical Implementation Strategy
+
+During this session, we built two custom middleware systems to intercept and manage traffic through our REST API architecture:
+
+### 1. Application-Level: Custom Logger Middleware
+* **File Location:** `src/middleware/logger.js` (or `src/utils/logger.js`)
+* **Objective:** Capture a clean, standardized console log showing the precise UTC timestamp, HTTP method, and exact path targeted by every client interaction.
+
+### 2. Router-Level: Mock Authentication Middleware
+* **File Location:** `src/middleware/auth.js`
+* **Objective:** Protect specific data mutation endpoints (`POST /users`) by inspecting the client's request headers. 
+* **Validation Logic:** Checks for the presence of a custom header key (`x-api-key`). If the key matches the secret string, it passes access forward via `next()`; if it is missing or incorrect, it immediately terminates the lifecycle with a `401 Unauthorized` block.
 
 
