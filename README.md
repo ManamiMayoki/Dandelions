@@ -84,3 +84,17 @@ build path(routes) for **REST API**
 -**Install Express** `npm install express`
 
 
+## Day 4: Middleware
+
+Series of checkpoints/gates that a request passes through before it finally hits route handler and sends back a response.
+
+---
+
+* **Middleware Lifecycle**Every middleware function in Express has access to three things:
+  * Request object `req`
+  * Response object `res`
+  * special function 'next()`
+
+[Incoming Request] --> [Middleware 1 (req,res,next)] --> [Middleware 2] --> [Route Controller] --> [Response Sent]
+
+
