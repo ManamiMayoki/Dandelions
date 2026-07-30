@@ -97,4 +97,11 @@ Series of checkpoints/gates that a request passes through before it finally hits
 
 [Incoming Request] --> [Middleware 1 (req,res,next)] --> [Middleware 2] --> [Route Controller] --> [Response Sent]
 
+* **Types of Middleware**
+| Middleware Type | Where it Works | Purpose | Example Code |
+| Application Middleware | Whole app | Runs for every request (logging) | `app.use((req, res, next) => { console.log("Request received"); next(); });` |
+| Router Middleware | Specific route | Runs only for certain routes | `app.get('/user', (req, res) => { res.send("User route"); });` |
+| Error Middleware | Handles errors | Catches and handles errors (4 params) | `app.use((err, req, res, next) => { res.status(500).send("Something went wrong"); });` |
+
+
 
