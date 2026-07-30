@@ -90,17 +90,17 @@ Series of checkpoints/gates that a request passes through before it finally hits
 
 ---
 
-* **Middleware Lifecycle**Every middleware function in Express has access to three things:
+* **Middleware Lifecycle:** Every middleware function in Express has to access three things:
   * Request object `req`
   * Response object `res`
-  * special function 'next()`
+  * special function `next()`
 
 [Incoming Request] --> [Middleware 1 (req,res,next)] --> [Middleware 2] --> [Route Controller] --> [Response Sent]
 
 ## Core Middleware Classifications
 
 | Middleware Type | Where it Works | Purpose | Binding Target | Function Signature | Example Code |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| :--- | :--- | :-------------------- | :--------------- | :---------- | :--- |
 | **Application Middleware** | Whole app | Runs for every request (logging, parsing) | `app.use()` | `(req, res, next) => {}` | `app.use((req, res, next) => { console.log("Request received"); next(); });` |
 | **Router Middleware** | Specific route | Runs only for certain routes or sub-paths | `router.use()` or inline in routes like `router.get(path, middleware, handler)` | `(req, res, next) => {}` | `router.get('/user', authMiddleware, (req, res) => { res.send("User route"); });` |
 | **Error Middleware** | Handles errors | Catches and handles app errors gracefully | `app.use()` *(placed at the very bottom)* | `(err, req, res, next) => {}` | `app.use((err, req, res, next) => { res.status(500).send("Something went wrong"); });` |
