@@ -6,6 +6,9 @@ const userRoutes=require('./routes/userRoutes');
 const app=express();
 const PORT=process.env.PORT || 3000;
 
+const logger=require('./middleware/logger');
+const mockAuth=require('./middleware/auth');
+
 //MIDDLEWARE: Allows the server to parse JSON bodies sent by the client
 app.use(express.json());
 
@@ -15,3 +18,7 @@ app.use('/users',userRoutes);
 app.listen(PORT,()=>{
     console.log('Server is running on port',PORT);
 })
+
+
+const app=express();
+app.use(logger);
