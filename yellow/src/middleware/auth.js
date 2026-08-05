@@ -11,4 +11,4 @@ const mockAuth=(req,res,next)=>{
     }
 };
 
-mosule.exports=mockAuth;
+module.exports=mockAuth;

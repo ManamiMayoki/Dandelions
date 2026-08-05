@@ -121,3 +121,24 @@ During this session, we built two custom middleware systems to intercept and man
 * **Validation Logic:** Checks for the presence of a custom header key (`x-api-key`). If the key matches the secret string, it passes access forward via `next()`; if it is missing or incorrect, it immediately terminates the lifecycle with a `401 Unauthorized` block.
 
 
+
+## Day 5: REST & HTTP Status Codes
+
+REST (Representational State Transfer) is just a set of standard rules for how a client (like Postman or a website) communicates with a server.
+
+* **Resources** Everything in REST is a resource(users, products, orders).Resources are represented as nouns in plural form(/users).
+* **Verbs** Use standard HTTP methods to tell the server what action to take:
+  * `GET` --> Read/Fetch data
+  * `POST` --> Create new data
+  * `PUT` --> Update existing data completely
+  * `DELETE` --> Remove data
+ 
+* **HTTP Status Codes** Status codes are three-digit numbers thats server sends back to tell the client what happened. Think of them as traffic signals:
+  * `200 OK`: Everything worked! Here is your data.
+  * `201 Created`: Success! A new resource was created.
+  * `400 Bad Request`: Client error. You sent missing or invalid data (missing an email).
+  * `404 Not Found`: Client error. The resource or user ID doesn't exist.
+  * `500 Internal Server Error`: Server error. Something crashed or broke on the database end.
+
+
+
