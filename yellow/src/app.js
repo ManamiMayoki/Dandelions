@@ -3,22 +3,32 @@
 require('dotenv').config();
 const express=require('express');
 const userRoutes=require('./routes/userRoutes');
-const app=express();
-const PORT=process.env.PORT || 3000;
-
 const logger=require('./middleware/logger');
 const mockAuth=require('./middleware/auth');
 
-//MIDDLEWARE: Allows the server to parse JSON bodies sent by the client
-app.use(express.json());
 
-//ROUTING: Directs all incoming traffic starting with "/users" to the router
+const app=express();
+const PORT=process.env.PORT || 3000;
+
+
+
+//MIDDLEWARE: Parse incoming JSON requests & log traffic
+app.use(express.json());
+app.use(logger);//Application Middleware: run globally for all routes
+
+//PUBLIC ROUTES: no auth required
+app.get('/public',(req,res)=>{
+    res.json({message:'Welcome to public page!'});
+});
+
+//PROTECTED ROUTE: auth required protected by mockauth middleware
+app.get('/secret',mockAuth,(req,res)=>{
+    res.json({message:'Welcome to secret page!'});
+});
+
+//ROUTING: user CRUD endpoints
 app.use('/users',userRoutes);
 
 app.listen(PORT,()=>{
     console.log('Server is running on port',PORT);
 })
-
-
-const app=express();
-app.use(logger);
