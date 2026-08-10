@@ -23,4 +23,6 @@ const createUser=(req,res)=>{
         name,
         email
     };
+    users.push(newUser);
+    res.status(201).json(newUser);
 }
