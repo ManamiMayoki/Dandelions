@@ -42,3 +42,24 @@ const updateUser=(req,res)=>{
 
     res.status(200).json(user);
 }
+
+//4.Delete
+const deleteUser=(req,res)=>{
+    const userId=parseInt(req.params.id);
+    const userIndex=users.findIndex((u)=>u.id===userId);
+
+    if(userIndex===-1){
+        return res.status(404).json({message:'User not found!'});
+    }
+
+    //remove
+    users.splice(userIndex,1);
+    res.status(200).json({message:'User deleted successfully!'});
+}
+
+module.exports={
+    getAllUsers,
+    createUser,
+    updateUser,
+    deleteUser
+}
