@@ -141,4 +141,46 @@ REST (Representational State Transfer) is just a set of standard rules for how a
   * `500 Internal Server Error`: Server error. Something crashed or broke on the database end.
 
 
+## Day 6: MongoDB, NoSQL & Mongoose
+
+* **SQL vs NoSQL**
+  * **SQL** → Stores data in fixed tables with rows and columns. Examples: `MySQL`, `PostgreSQL`
+  * **NoSQL** → Stores data in flexible documents. Example: `MongoDB`
+  * **SQL** is more structured, while **NoSQL** is more flexible.
+
+MongoDB is a **NoSQL database** that stores data in flexible, JSON-like documents instead of fixed tables and rows. Mongoose helps Node.js applications work with MongoDB using schemas and models.
+
+* **Collections**
+  A collection is a container that stores related documents. It is similar to a **table** in SQL.
+  Example: `users`
+
+* **Documents**
+  A document is a single record stored inside a collection. It is similar to a **row** in SQL and uses a JSON-like format.
+  Example:
+
+* **Mongoose**
+  Mongoose is an **ODM (Object Data Modeling)** library that helps Node.js communicate with MongoDB using JavaScript.
+
+* **Schema**
+  A schema defines the **structure and rules** of the data.
+  Example: A user's `name` must be a string.
+
+* **Model**
+  A model is created from a schema and provides functions to work with the database, such as:
+
+  * `.find()` → Find data
+  * `.save()` → Save data
+  * `.findOne()` → Find one document
+  * `.deleteOne()` → Delete a document
+
+### Setup
+
+```bash
+npm install mongoose
+```
+
+## Day 7
+
+
+
 
