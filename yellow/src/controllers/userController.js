@@ -7,7 +7,7 @@ let users=[
 
 //1.Read
 const getAllUsers=(req,res)=>{
-    req.status(200).json(users);
+    res.status(200).json(users);
 }
 
 //2.Create
@@ -25,4 +25,20 @@ const createUser=(req,res)=>{
     };
     users.push(newUser);
     res.status(201).json(newUser);
+}
+
+//3.Update
+const updateUser=(req,res)=>{
+    const userId=parseInt(req.params.id);
+    const {name,email}=req.body;
+
+    const user=users.find((u)=>u.id===userId);
+
+    if(!user){
+        return res.status(404).json({message:'User not found!'});
+    }
+    if (name) user.name=name;
+    if (email) user.email=email;
+
+    res.status(200).json(user);
 }
