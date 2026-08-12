@@ -46,4 +46,9 @@ const PORT=process.env.PORT || 3000;
 
 //Middleware
 app.use(express.json());
-app.use.apply(logger);
+app.use.logger();
+
+//Routes
+app.use('/',userRoutes);
+
+//connect to MongoDB
